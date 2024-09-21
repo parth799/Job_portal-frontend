@@ -44,8 +44,6 @@ export const getUser = createAsyncThunk(
   async () => {
     try {
       const response = await axiosInstance.get("/user/getuser");
-      console.log("response", response);
-
       return response.data.user;
     } catch (error) {
       toast.error(error?.response?.data?.error || "Failed to fetch user details!");
