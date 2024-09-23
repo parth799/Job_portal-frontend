@@ -17,7 +17,7 @@ input::-webkit-outer-spin-button {
 .btn,
 .black_btn,
 .outline_btn {
-  background: #dfdf07;
+  background: #318CE7;
   color: #111;
   font-weight: 500;
   border: none;
@@ -57,8 +57,8 @@ input::-webkit-outer-spin-button {
 }
 .outline_btn {
   background: transparent;
-  color: #dfdf07;
-  border: 1px solid #dfdf07;
+  color: #318CE7;
+  border: 1px solid #318CE7;
 }
 .btn:hover {
   background-color: #111;
@@ -67,7 +67,7 @@ input::-webkit-outer-spin-button {
   cursor: pointer;
 }
 .outline_btn:hover {
-  background: #dfdf07;
+  background: #318CE7;
   color: #111;
   transition: 0.3s;
   cursor: pointer;
@@ -93,7 +93,7 @@ input::-webkit-outer-spin-button {
   font-size: 26px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #dfdf07;
+  color: #318CE7;
 }
 .navbar .logo img {
   width: 120px;
@@ -116,7 +116,7 @@ input::-webkit-outer-spin-button {
   transition: 0.3s;
 }
 .navbar .links ul li a:hover {
-  color: #dfdf07;
+  color: #318CE7;
   transition: 0.3s;
 }
 .navbar .links ul:last-child {
@@ -187,7 +187,7 @@ input::-webkit-outer-spin-button {
     width: 40px;
   }
   .navbar {
-    height: 75px;
+    height: 57px;
   }
   .show_navbar {
     height: 340px;
@@ -290,7 +290,7 @@ footer div ul a {
   transition: 0.3s;
 }
 footer div ul a:hover {
-  color: #dfdf07;
+  color: #318CE7;
   transition: 0.3s;
 }
 footer div ul a span {
@@ -359,7 +359,7 @@ footer div ul a span {
 .hero .box {
   max-width: 900px;
   text-align: center;
-  background: #dfdf07;
+  background: #318CE7;
   color: #111;
   padding: 50px 75px;
   border-radius: 35px;
@@ -403,7 +403,7 @@ footer div ul a span {
 .services h3 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #dfdf07;
+  color: #318CE7;
   text-transform: uppercase;
 }
 .services .grid {
@@ -422,7 +422,7 @@ footer div ul a span {
   transition: 0.3s;
 }
 .services .grid .card:hover {
-  background: #dfdf07;
+  background: #318CE7;
   color: #111;
   transition: 0.3s;
 }
@@ -445,7 +445,7 @@ footer div ul a span {
   align-items: center;
   margin: 0 auto;
   gap: 50px;
-  background: #dfdf07;
+  background: #318CE7;
 }
 .howItWorks h3 {
   font-size: 1.75rem;
@@ -587,7 +587,7 @@ footer div ul a span {
 .authPage .container form .inputTag div svg {
   width: 10%;
   font-size: 1.5rem;
-  background: #dfdf07;
+  background: #318CE7;
   height: 46px;
   padding: 8px;
   color: #fff;
@@ -599,17 +599,17 @@ footer div ul a span {
   margin-top: 25px;
   font-weight: 700;
   color: #fff;
-  background: #dfdf07;
+  background: #318CE7;
   font-size: 1.2rem;
   border-radius: 7px;
 }
 .authPage .container form a {
   padding: 12px;
   text-align: center;
-  border: 1px solid #dfdf07;
+  border: 1px solid #318CE7;
   margin-top: 25px;
   font-weight: 700;
-  color: #dfdf07;
+  color: #318CE7;
   font-size: 1.2rem;
   text-decoration: none;
   border-radius: 7px;
@@ -715,7 +715,7 @@ footer div ul a span {
   position: absolute;
   right: 16px;
   top: 11px;
-  background: #dfdf07;
+  background: #318CE7;
   color: #111;
   font-weight: 500;
   padding: 2px 10px;
@@ -878,7 +878,7 @@ footer div ul a span {
   color: #111;
 }
 .account .component_header p:last-child span {
-  color: #dfdf07;
+  color: #318CE7;
 }
 
 .account .container {
@@ -910,11 +910,11 @@ footer div ul a span {
   background: transparent;
 }
 .account .container .sidebar .sidebar_links button:hover {
-  color: #dfdf07;
+  color: #318CE7;
   transition: 0.3s;
 }
 .account .container .sidebar .sidebar_links .active {
-  color: #dfdf07;
+  color: #318CE7;
 }
 .account .container .banner {
   width: 100%;
@@ -940,7 +940,7 @@ footer div ul a span {
 .account_components h3 {
   font-size: 30px;
   font-weight: 600;
-  color: #dfdf07;
+  color: #318CE7;
 }
 .account_components div:first-child {
   font-size: 30px;

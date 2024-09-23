@@ -6,7 +6,7 @@ import { MdCategory, MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { clearAllErrors, register } from "../stores/Slice/userSlice";
+import { clearAllUserErrors, register } from "../stores/Slice/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -82,7 +82,7 @@ const Register = () => {
     useEffect(() => {
       if (error) {
         toast.error(error);
-        dispatch(clearAllErrors());
+        dispatch(clearAllUserErrors());
       }
       if (isAuthenticated) {
         navigateTo("/");

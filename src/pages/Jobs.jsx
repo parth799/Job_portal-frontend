@@ -18,8 +18,6 @@ const Jobs = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
 
   const { jobs, loading, error } = useSelector((state) => state.jobs);
-
-  console.log("jobs" ,jobs);
   
   const handleCityChange = (city) => {
     setCity(city);  
@@ -164,7 +162,7 @@ const Jobs = () => {
               </div>
               <div className="jobs_container">
                 {jobs &&
-                  jobs.map((element) => {
+                  jobs?.map((element) => {
                     return (
                       <div className="card" key={element._id}>
                         {element.hiringMultipleCandidates === "Yes" ? (

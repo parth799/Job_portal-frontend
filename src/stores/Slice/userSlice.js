@@ -44,7 +44,7 @@ export const getUser = createAsyncThunk(
   async () => {
     try {
       const response = await axiosInstance.get("/user/getuser");
-      return response.data.user;
+      return response.data.data;
     } catch (error) {
       toast.error(error?.response?.data?.error || "Failed to fetch user details!");
       throw error;
@@ -76,7 +76,7 @@ const userSlice = createSlice({
     message: null,
   },
   reducers: {
-    clearAllErrors(state) {
+    clearAllUserErrors(state) {
       state.error = null;
     },
   },
@@ -128,7 +128,6 @@ const userSlice = createSlice({
         state.isAuthenticated = false;
       });
 
-    // Handle logout
     builder
       .addCase(logout.fulfilled, (state) => {
         state.isAuthenticated = false;
@@ -140,5 +139,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearAllErrors } = userSlice.actions;
+export const { clearAllUserErrors } = userSlice.actions;
 export default userSlice.reducer;

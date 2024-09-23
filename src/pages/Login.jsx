@@ -1,10 +1,9 @@
-// import React from 'react'
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearAllErrors, login } from "../stores/Slice/userSlice";
+import { clearAllUserErrors, login } from "../stores/Slice/userSlice";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { FaRegUser } from "react-icons/fa";
@@ -36,7 +35,7 @@ const Login = () => {
     useEffect(() => {
       if (error) {
         toast.error(error);
-        dispatch(clearAllErrors());
+        dispatch(clearAllUserErrors());
       }
       if (isAuthenticated) {
         navigateTo("/");

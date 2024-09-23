@@ -21,7 +21,6 @@ export const fetchJobs = createAsyncThunk(
       link += queryParams.join("&");
       const response = await axiosInstance.get(link);
 
-      
       return response.data.data.jobs;
     } catch (error) {
       return rejectWithValue(error?.response?.data?.message);
@@ -111,7 +110,7 @@ const jobSlice = createSlice({
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.loading = false;
         state.jobs = action.payload;
-        
+
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.loading = false;
