@@ -1,79 +1,84 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../hooks/axiosInstance";
+import { toast } from "react-toastify";
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchAll",
-  async ({ city, niche, searchKeyword = "" }, { rejectWithValue }) => {
+  async ({ city, niche, searchKeyword = "" }) => {
     try {
-      let link = "/job/get-all-jobs";
+      let link = "/job/get-all-jobs?";
       const queryParams = [];
 
-      if (searchKeyword) {
-        queryParams.push(`searchKeyword=${searchKeyword}`);
-      }
-      if (city) {
-        queryParams.push(`city=${city}`);
-      }
-      if (niche) {
-        queryParams.push(`niche=${niche}`);
-      }
+      if (searchKeyword) queryParams.push(`searchKeyword=${searchKeyword}`);
+      if (city) queryParams.push(`city=${city}`);
+      if (niche) queryParams.push(`niche=${niche}`);
 
       link += queryParams.join("&");
       const response = await axiosInstance.get(link);
 
+      toast.success("Jobs fetched successfully!");
       return response.data.data.jobs;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error fetching jobs");
+      throw error; 
     }
   }
 );
 
 export const fetchSingleJob = createAsyncThunk(
   "jobs/fetchSingle",
-  async (jobId, { rejectWithValue }) => {
+  async (jobId) => {
     try {
       const response = await axiosInstance.get(`/job/get/${jobId}`);
+      toast.success("Single job fetched successfully!");
       return response.data.job;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error fetching job");
+      throw error; 
     }
   }
 );
 
 export const postJob = createAsyncThunk(
   "jobs/post",
-  async (data, { rejectWithValue }) => {
+  async (data) => {
     try {
       const response = await axiosInstance.post(`/job/post-job`, data, {
         headers: { "Content-Type": "application/json" },
       });
+      toast.success("Job posted successfully!");
       return response.data.message;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error posting job");
+      throw error; 
     }
   }
 );
 
 export const getMyJobs = createAsyncThunk(
   "jobs/getMyJobs",
-  async (_, { rejectWithValue }) => {
+  async () => {
     try {
       const response = await axiosInstance.get(`/job/getmyjobs`);
+      toast.success("Fetched my jobs successfully!");
       return response.data.myJobs;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error fetching my jobs");
+      throw error; 
     }
   }
 );
 
 export const deleteJob = createAsyncThunk(
   "jobs/delete",
-  async (id, { rejectWithValue }) => {
+  async (id) => {
     try {
       const response = await axiosInstance.delete(`/job/delete/${id}`);
+      toast.success("Job deleted successfully!");
       return response.data.message;
     } catch (error) {
-      return rejectWithValue(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error deleting job");
+      throw error; 
     }
   }
 );
@@ -110,11 +115,10 @@ const jobSlice = createSlice({
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.loading = false;
         state.jobs = action.payload;
-
       })
-      .addCase(fetchJobs.rejected, (state, action) => {
+      .addCase(fetchJobs.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = "Failed to fetch jobs"; // Provide generic error message
       })
 
       .addCase(fetchSingleJob.pending, (state) => {
@@ -125,9 +129,9 @@ const jobSlice = createSlice({
         state.loading = false;
         state.singleJob = action.payload;
       })
-      .addCase(fetchSingleJob.rejected, (state, action) => {
+      .addCase(fetchSingleJob.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = "Failed to fetch job";
       })
 
       .addCase(postJob.pending, (state) => {
@@ -138,9 +142,9 @@ const jobSlice = createSlice({
         state.loading = false;
         state.message = action.payload;
       })
-      .addCase(postJob.rejected, (state, action) => {
+      .addCase(postJob.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = "Failed to post job";
       })
 
       .addCase(getMyJobs.pending, (state) => {
@@ -151,9 +155,9 @@ const jobSlice = createSlice({
         state.loading = false;
         state.myJobs = action.payload;
       })
-      .addCase(getMyJobs.rejected, (state, action) => {
+      .addCase(getMyJobs.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = "Failed to fetch my jobs";
       })
 
       .addCase(deleteJob.pending, (state) => {
@@ -164,9 +168,9 @@ const jobSlice = createSlice({
         state.loading = false;
         state.message = action.payload;
       })
-      .addCase(deleteJob.rejected, (state, action) => {
+      .addCase(deleteJob.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = "Failed to delete job";
       });
   },
 });

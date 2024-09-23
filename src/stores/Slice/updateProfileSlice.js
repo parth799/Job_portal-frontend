@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 export const updateProfile = createAsyncThunk(
   "updateProfile/updateProfile",
-  async (data, { rejectWithValue }) => {
+  async (data, ) => {
     try {
       const response = await axiosInstance.put(
         "/user/update/profile",
@@ -17,14 +17,15 @@ export const updateProfile = createAsyncThunk(
       return response.data;
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to update profile.");
-      return rejectWithValue(error.response?.data?.message);
+      console.log(error);
+      
     }
   }
 );
 
 export const updatePassword = createAsyncThunk(
   "updateProfile/updatePassword",
-  async (data, { rejectWithValue }) => {
+  async (data) => {
     try {
       const response = await axiosInstance.put(
         "/user/update/password",
@@ -38,7 +39,8 @@ export const updatePassword = createAsyncThunk(
       return response.data;
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to update password.");
-      return rejectWithValue(error.response?.data?.message);
+      console.log(error);
+      
     }
   }
 );
