@@ -60,8 +60,8 @@ export const getMyJobs = createAsyncThunk(
   async () => {
     try {
       const response = await axiosInstance.get(`/job/getmyjobs`);
-      toast.success("Fetched my jobs successfully!");
-      return response.data.myJobs;
+
+      return response.data.data;
     } catch (error) {
       toast.error(error?.response?.data?.message || "Error fetching my jobs");
       throw error; 

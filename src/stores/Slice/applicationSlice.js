@@ -6,8 +6,8 @@ export const fetchEmployerApplications = createAsyncThunk(
     "applications/fetchEmployerApplications",
     async () => {
         try {
-            const response = await axiosInstance.get("/api/v1/application/employer/getall");
-            return response.data.applications;
+            const response = await axiosInstance.get("/application/employer/getall");
+            return response.data.data;
         } catch (error) {
             console.log(error);
 
@@ -20,7 +20,7 @@ export const fetchJobSeekerApplications = createAsyncThunk(
     "applications/fetchJobSeekerApplications",
     async () => {
         try {
-            const response = await axiosInstance.get("/api/v1/application/jobseeker/getall");
+            const response = await axiosInstance.get("/application/jobseeker/getall");
             return response.data.applications;
         } catch (error) {
             console.log(error);
@@ -34,7 +34,7 @@ export const postApplication = createAsyncThunk(
     "applications/postApplication",
     async ({ data, jobId }) => {
         try {
-            const response = await axiosInstance.post(`/api/v1/application/post/${jobId}`, data, {
+            const response = await axiosInstance.post(`/application/post/${jobId}`, data, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             toast.success("Application submitted successfully!");
@@ -50,7 +50,7 @@ export const deleteApplication = createAsyncThunk(
     "applications/deleteApplication",
     async (id, ) => {
         try {
-            const response = await axiosInstance.delete(`/api/v1/application/delete/${id}`);
+            const response = await axiosInstance.delete(`/application/delete/${id}`);
             toast.success("Application deleted successfully!");
             return response.data.message;
         } catch (error) {
@@ -70,7 +70,7 @@ const applicationSlice = createSlice({
         message: null,
     },
     reducers: {
-        clearAllErrors(state) {
+        clearAllApplicationErrors(state) {
             state.error = null;
         },
         resetApplicationSlice(state) {
@@ -141,5 +141,5 @@ const applicationSlice = createSlice({
     },
 });
 
-export const { clearAllErrors, resetApplicationSlice } = applicationSlice.actions;
+export const { clearAllApplicationErrors, resetApplicationSlice } = applicationSlice.actions;
 export default applicationSlice.reducer;

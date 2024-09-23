@@ -12,6 +12,9 @@ import { LuMoveRight } from "react-icons/lu";
 import MyProfile from "../components/MyProfile";
 import UpdateProfile from "../components/UpdateProfile";
 import UpdatePassword from "../components/UpdatePassword";
+import JobPost from "../components/JobPost";
+import MyJobs from "../components/MyJobs";
+import Applications from "../components/Applications";
 const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [componentName, setComponentName] = useState("My Profile");
@@ -156,15 +159,15 @@ const Dashboard = () => {
                 case "Update Password":
                   return <UpdatePassword />;
                   break;
-                // case "Job Post":
-                //   return <JobPost />;
-                //   break;
-                // case "My Jobs":
-                //   return <MyJobs />;
-                //   break;
-                // case "Applications":
-                //   return <Applications />;
-                //   break;
+                case "Job Post":
+                  return <JobPost />;
+                  break;
+                case "My Jobs":
+                  return <MyJobs />;
+                  break;
+                case "Applications":
+                  return <Applications />;
+                  break;
                 // case "My Applications":
                 //   return <MyApplications />;
                 //   break;
